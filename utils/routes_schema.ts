@@ -4,6 +4,9 @@ enum Role {
   "teacher",
   "Student",
 }
+const clasSchema = z.object({
+  className:z.string()
+})
 const PostAuthSchema = z.object({
   name: z.string(),
   email: z.email(),
@@ -52,13 +55,7 @@ const PostClassInfo = z.object({
 
 //add a student in a class
 const AddStudentSchema = z.object({
-  success: true,
-  data: {
-    _id: z.string(),
-    className: z.string(),
-    teacherId: z.string(),
-    studentIds: z.array(z.string()),
-  },
+  studentId : z.string()
 });
 
 const GetClassDetailsSchema = z.object({
@@ -119,6 +116,7 @@ const AttendanceSchema = z.object({
 });
 
 export {
+  clasSchema,
   Role,
   PostAuthSchema,
   PostResponseSchemaStudent,
